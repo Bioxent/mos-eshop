@@ -4,13 +4,16 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const dotenv = require('dotenv');
 
 const PORT = process.env.PORT || 3001;
-
+dotenv.config();
 const path = require("path");
 const app = express();
+const dba = process.env.DB_A;
 
-// app.use(express.static("public"));
+
+// app.use(express.static("../client/public"));
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(
   bodyParser.urlencoded({
@@ -33,7 +36,7 @@ app.use(passport.session());
 //   useNewUrlParser: true,
 // });
 
-mongoose.connect("mongodb+srv://admin-eluk:sanjf368njFDc@cluster0.sjbwo.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect('mongodb+srv://admin-eluk:' + dba + '@cluster0.sjbwo.mongodb.net/?retryWrites=true&w=majority');
 
 const userSchema = new mongoose.Schema({
   username: String,
