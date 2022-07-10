@@ -10,7 +10,9 @@ const PORT = process.env.PORT || 3001;
 dotenv.config();
 const path = require("path");
 const app = express();
+
 const dba = process.env.DB_A;
+const sec_data = process.env.SPECIAL_SESSION;
 
 
 // app.use(express.static("../client/public"));
@@ -23,7 +25,7 @@ app.use(
 
 app.use(
   session({
-    secret: "Our little secret",
+    secret: sec_data,
     resave: false,
     saveUninitialized: false,
   })
