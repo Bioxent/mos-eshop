@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import { Routes, Route, Link } from "react-router-dom";
 
-import "./ProductItem.css";
+import "./FavoriteProductItem.css";
 
-const ProductItem = (props) => {
+const FavoriteProductItem = (props) => {
   const pathToLink = "/catalog/" + props.id;
 
   const stateData = {
@@ -15,10 +15,18 @@ const ProductItem = (props) => {
     imgUrl: props.imageUrl,
   };
 
+  function onClickDeleteItem(event) {
+    const clicked = props.id;
+    props.onSubmitDelete(clicked);
+  }
+
   return (
     <div className="col">
       <div className="card shadow-sm">
-        <img className="img-fluid img-thumbnail product-img" src={props.imageUrl} />
+        <img
+          className="img-fluid img-thumbnail product-img"
+          src={props.imageUrl}
+        />
 
         <div className="card-body product-card">
           <p className="card-text">{props.children}</p>
@@ -27,10 +35,9 @@ const ProductItem = (props) => {
               <button
                 type="button"
                 className="btn btn-sm btn-outline-secondary "
+                onClick={onClickDeleteItem}
               >
-                <Link className="nav-link" to={pathToLink} state={stateData}>
-                  View
-                </Link>
+                Delete
               </button>
             </div>
           </div>
@@ -40,4 +47,4 @@ const ProductItem = (props) => {
   );
 };
 
-export default ProductItem;
+export default FavoriteProductItem;

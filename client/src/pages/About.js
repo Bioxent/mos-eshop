@@ -1,13 +1,15 @@
 import React from "react";
 
 const About = (props) => {
-  const [data, setData] = React.useState(null);
+  const [productList, setProductList] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("/checkUser")
+    fetch("/getProducts")
       .then((res) => res.json())
-      .then((data) => setData(data.username));
+      .then((productList) => setProductList(productList.products));
   }, []);
+
+  console.log(productList);
 
   return (
     <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">

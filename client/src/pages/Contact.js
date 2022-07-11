@@ -6,7 +6,7 @@ const Contact = (props) => {
       <div className="col-md-5 p-lg-5 mx-auto my-5">
         <h1 className="display-4 fw-normal">Contact</h1>
         <p className="lead fw-normal">
-          emailtocontact@example.com
+          example@gmail.com
         </p>
       </div>
       <div className="product-device shadow-sm d-none d-md-block"></div>
